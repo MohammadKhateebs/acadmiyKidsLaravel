@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 11, 2021 at 02:08 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Host: localhost:3306
+-- Generation Time: Dec 13, 2021 at 05:03 PM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,61 +31,45 @@ SET time_zone = "+00:00";
 CREATE TABLE `attendances` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `identification` int(11) NOT NULL,
-  `studyLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `branch_id` int(255) DEFAULT NULL,
   `date` date NOT NULL,
-  `role` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `archives` int(11) NOT NULL DEFAULT 0
+  `archives` int(11) NOT NULL DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `attendances`
 --
 
-INSERT INTO `attendances` (`name`, `identification`, `studyLevel`, `date`, `role`, `created_at`, `updated_at`, `archives`) VALUES
-('اسلام  جرادات', 100, 'الاول', '2021-05-12', 3, '2021-05-10 16:08:05', '2021-05-20 13:36:45', 0),
-('اسلام  جرادات', 100, 'الاول', '2021-05-14', 3, '2021-05-10 16:12:18', '2021-05-20 13:36:45', 0),
-('اسلام  جرادات', 100, 'الاول', '2021-05-15', 3, '2021-05-10 16:09:03', '2021-05-20 13:36:45', 0),
-('اسلام  جرادات', 100, 'الاول', '2021-05-28', 3, '2021-05-10 16:12:46', '2021-05-20 13:36:45', 1),
-('نبيل خليل', 101, 'الثاني', '2021-04-12', 3, '2021-04-12 12:22:31', '2021-05-20 13:36:45', 1),
-('ليث  ابوصلاح', 105, 'الاول', '2021-05-13', 3, '2021-05-10 16:04:15', '2021-05-20 13:36:45', 1),
-('ليث  ابوصلاح', 105, 'الاول', '2021-05-18', 3, '2021-05-10 16:10:20', '2021-05-20 13:36:45', 1),
-('ليث  ابوصلاح', 105, 'الاول', '2021-05-20', 3, '2021-05-11 10:24:24', '2021-05-20 13:36:45', 1),
-('ليث  ابوصلاح', 105, 'الاول', '2021-05-23', 3, '2021-05-10 16:09:30', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-04-07', 4, '2021-05-10 15:52:32', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-11', 4, '2021-05-10 15:22:09', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-14', 4, '2021-05-10 15:59:10', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-18', 4, '2021-05-10 15:54:39', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-19', 4, '2021-05-10 15:49:47', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-21', 4, '2021-05-10 15:59:42', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-26', 4, '2021-05-10 15:56:02', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-05-27', 4, '2021-05-10 16:09:13', '2021-05-20 13:36:45', 1),
-('محمد  شسي', 121, 'الاول', '2021-06-11', 4, '2021-05-10 15:51:47', '2021-05-20 13:36:45', 1),
-('كرم  مقالدة', 400, 'الاول', '2021-05-11', 4, '2021-05-10 15:22:09', '2021-05-20 13:36:45', 1),
-('كرم  مقالدة', 400, 'الاول', '2021-05-12', 4, '2021-05-10 15:56:53', '2021-05-20 13:36:45', 1),
-('كرم  مقالدة', 400, 'الاول', '2021-05-22', 4, '2021-05-10 15:56:19', '2021-05-20 13:36:45', 1),
-('ادم جمال', 404, 'الثاني', '2021-04-12', 4, '2021-04-12 12:21:44', '2021-05-20 13:36:45', 1),
-('يوسف  اعمور', 406, 'الاول', '2021-05-10', 4, '2021-05-10 15:54:01', '2021-05-20 13:36:45', 1),
-('يوسف  اعمور', 406, 'الاول', '2021-05-18', 4, '2021-05-10 15:54:39', '2021-05-20 13:36:45', 1),
-('يوسف  اعمور', 406, 'الاول', '2021-05-20', 4, '2021-05-10 15:58:44', '2021-05-20 13:36:45', 1),
-('يوسف  اعمور', 406, 'الاول', '2021-05-26', 4, '2021-05-10 15:56:02', '2021-05-20 13:36:45', 1),
-('اوس جرادات', 407, 'الثاني', '2021-04-12', 4, '2021-04-12 12:21:44', '2021-05-20 13:36:45', 1),
-('محمد  سسس', 1258, 'الاول', '2020-12-24', 4, '2021-05-11 10:24:43', '2021-05-20 13:36:45', 1),
-('محمد  سسس', 1258, 'الاول', '2021-05-14', 4, '2021-05-10 15:59:10', '2021-05-20 13:36:45', 1),
-('محمد  جرادات', 4042, 'الاول', '2021-05-11', 4, '2021-05-10 15:22:09', '2021-05-20 13:36:45', 1),
-('محمد  جرادات', 4042, 'الاول', '2021-05-19', 4, '2021-05-10 15:49:47', '2021-05-20 13:36:45', 1),
-('محمد  جرادات', 4042, 'الاول', '2021-06-11', 4, '2021-05-10 15:51:47', '2021-05-20 13:36:45', 1),
-('اسلام  جرادات', 4564, 'الاول', '2021-04-22', 3, '2021-05-10 16:13:34', '2021-05-20 13:36:45', 0),
-('اسلام  جرادات', 4564, 'الاول', '2021-05-11', 3, '2021-05-10 16:02:39', '2021-05-20 13:36:45', 0),
-('كمنمك  نتنم', 4564, 'الاول', '2021-10-05', 4, '2021-10-06 13:47:59', '2021-10-06 13:47:59', 0),
-('كمنمك  نتنم', 4564, 'الاول', '2021-10-06', 4, '2021-10-06 13:46:24', '2021-10-06 13:46:24', 0),
-('كمكم  كمكمك', 4654, 'الاول', '2021-10-05', 4, '2021-10-06 13:47:59', '2021-10-06 13:47:59', 0),
-('كمكم  كمكمك', 4654, 'الاول', '2021-10-06', 4, '2021-10-06 13:46:25', '2021-10-06 13:46:25', 0),
-('منمك  كمنكمنمك', 5465, 'الاول', '2021-10-05', 4, '2021-10-06 13:47:59', '2021-10-06 13:47:59', 0),
-('منمك  كمنكمنمك', 5465, 'الاول', '2021-10-06', 4, '2021-10-06 13:46:25', '2021-10-06 13:46:25', 0),
-('شسيس  خطيب', 64654, 'الاول', '2021-05-11', 4, '2021-05-10 15:22:09', '2021-05-20 13:36:45', 1),
-('وجدي محادي', 40484976, 'الثاني', '2021-04-12', 4, '2021-04-12 12:21:44', '2021-05-20 13:36:45', 1);
+INSERT INTO `attendances` (`name`, `identification`, `branch_id`, `date`, `created_at`, `updated_at`, `archives`, `id`, `role`) VALUES
+('رائد  مسعود', 147144447, 2, '2021-12-06', '2021-12-07 09:25:59', '2021-12-12 19:57:09', 3, 2, 1),
+('شهد', 123456787, 2, '2021-12-07', '2021-12-07 18:43:04', '2021-12-12 19:57:09', 3, 4, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branches`
+--
+
+CREATE TABLE `branches` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `classroom` varchar(30) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `delete` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `classroom`, `name`, `created_at`, `updated_at`, `delete`) VALUES
+(8, 'kg1', 'a', '2021-12-12 16:51:57', '2021-12-12 16:51:57', 0),
+(9, 'kg2', 'a', '2021-12-12 16:52:52', '2021-12-12 16:52:52', 0);
 
 -- --------------------------------------------------------
 
@@ -93,56 +78,28 @@ INSERT INTO `attendances` (`name`, `identification`, `studyLevel`, `date`, `role
 --
 
 CREATE TABLE `evaluations` (
-  `identification` int(11) NOT NULL,
-  `studyLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL,
-  `from` int(11) NOT NULL,
-  `to` int(11) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `branch_id` int(11) NOT NULL,
+  `term` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `evaluation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `archives` int(11) NOT NULL DEFAULT 0
+  `note` text COLLATE utf8mb4_unicode_ci,
+  `archives` int(11) NOT NULL DEFAULT '0',
+  `eval_ar` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eval_en` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eval_math` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eval_deen` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `evaluations`
 --
 
-INSERT INTO `evaluations` (`identification`, `studyLevel`, `date`, `from`, `to`, `created_at`, `updated_at`, `evaluation`, `archives`) VALUES
-(105, 'الاول', '2021-05-19', 2, 3, '2021-05-11 10:31:45', '2021-05-20 13:36:45', 'lljh. ', 1),
-(112, 'الثالث', '2021-05-13', 3, 4, '2021-05-12 09:28:24', '2021-05-20 13:36:45', 'ممتاز ', 1),
-(121, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(121, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:27', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(121, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(400, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(400, 'الاول', '2021-05-03', 2, 4, '2021-05-03 10:47:37', '2021-05-20 13:36:45', 'ممتاز ,fdvfds', 1),
-(400, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:28', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(400, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(401, 'الثالث', '2021-05-13', 3, 4, '2021-05-12 09:28:24', '2021-05-20 13:36:45', 'ممتاز ', 1),
-(404, 'الثاني', '2021-04-12', 2, 4, '2021-04-12 12:28:54', '2021-05-20 13:36:45', 'ممتاز', 1),
-(406, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(406, 'الاول', '2021-05-03', 2, 4, '2021-05-03 10:47:37', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(406, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:28', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(406, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(407, 'الثاني', '2021-04-12', 2, 4, '2021-04-12 12:28:54', '2021-05-20 13:36:45', 'ممتاز', 1),
-(1258, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(1258, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:28', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(1258, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(4042, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(4042, 'الاول', '2021-05-03', 2, 4, '2021-05-03 10:47:37', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(4042, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:28', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(4042, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(4045, 'الاول', '2021-05-19', 2, 3, '2021-05-11 10:31:45', '2021-05-20 13:36:45', 'lljh. ', 1),
-(4564, 'الاول', '2021-10-06', 2, 4, '2021-10-06 13:49:55', '2021-10-06 13:49:55', 'ممتاز ,تنتنتنتنت', 0),
-(4647, 'الثالث', '2021-05-06', 3, 4, '2021-05-18 13:55:06', '2021-05-20 13:36:45', 'ممتاز ', 1),
-(4647, 'الثالث', '2021-05-13', 3, 4, '2021-05-18 13:57:54', '2021-05-20 13:36:45', 'ممتاز بي', 1),
-(4647, 'الثالث', '2021-05-27', 3, 4, '2021-05-18 13:55:37', '2021-05-20 13:36:45', 'ممتاز ', 1),
-(4654, 'الاول', '2021-10-06', 2, 4, '2021-10-06 13:49:55', '2021-10-06 13:49:55', 'lljh. ,', 0),
-(5465, 'الاول', '2021-10-06', 2, 4, '2021-10-06 13:49:55', '2021-10-06 13:49:55', 'ممتاز ,', 0),
-(64654, 'الاول', '2021-04-28', 2, 4, '2021-05-11 10:30:14', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(64654, 'الاول', '2021-05-12', 2, 4, '2021-05-10 16:14:28', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(64654, 'الاول', '2021-05-27', 2, 4, '2021-05-11 10:24:15', '2021-05-20 13:36:45', 'ممتاز ,', 1),
-(40484976, 'الثاني', '2021-04-12', 2, 4, '2021-04-12 12:28:55', '2021-05-20 13:36:45', 'جيد', 1);
+INSERT INTO `evaluations` (`id`, `branch_id`, `term`, `month`, `created_at`, `updated_at`, `note`, `archives`, `eval_ar`, `eval_en`, `eval_math`, `eval_deen`, `student_id`) VALUES
+(1, 2, 1, 1, '2021-12-06 10:06:03', '2021-12-12 19:57:09', 'الطالب مجتهد يحتاج المزيد من المتابعه', 3, 'ممتاز', 'جيد جدا', 'جيد جدا', 'ممتاز', 123123123),
+(5, 8, 1, 1, '2021-12-13 13:54:08', '2021-12-13 13:54:08', 'ljfdgf', 0, 'ممتاز', 'ممتاز', 'ممتاز', 'ممتاز', 658421356);
 
 -- --------------------------------------------------------
 
@@ -164,8 +121,10 @@ CREATE TABLE `evaluation_texts` (
 
 INSERT INTO `evaluation_texts` (`evaluation`, `role`, `id`, `created_at`, `updated_at`) VALUES
 ('ممتاز', 4, 2, '2021-05-03 10:34:56', '2021-05-03 10:34:56'),
-('lljh.', 3, 3, '2021-05-11 10:31:31', '2021-05-11 10:31:31'),
-('lljh.', 4, 4, '2021-05-11 10:31:31', '2021-05-11 10:31:31');
+('جيد جدا', 4, 3, '2021-05-11 10:31:31', '2021-05-11 10:31:31'),
+('جيد', 4, 4, '2021-05-11 10:31:31', '2021-05-11 10:31:31'),
+('مقبول', 4, 5, '2021-05-11 10:31:31', '2021-05-11 10:31:31'),
+('ضعيف', 4, 6, '2021-05-11 10:31:31', '2021-05-11 10:31:31');
 
 -- --------------------------------------------------------
 
@@ -179,8 +138,34 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `installments`
+--
+
+CREATE TABLE `installments` (
+  `id` int(11) NOT NULL,
+  `term` int(4) NOT NULL,
+  `month` int(4) NOT NULL,
+  `receipt` float NOT NULL,
+  `student_id` int(100) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `installments` double NOT NULL,
+  `archives` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `installments`
+--
+
+INSERT INTO `installments` (`id`, `term`, `month`, `receipt`, `student_id`, `updated_at`, `created_at`, `installments`, `archives`) VALUES
+(61, 1, 1, 100, 145236752, '2021-12-12 19:57:09', '2021-12-12 10:12:28', 200, 3),
+(62, 1, 1, 100, 658421356, '2021-12-12 19:57:09', '2021-12-12 10:12:49', 100, 3);
 
 -- --------------------------------------------------------
 
@@ -193,11 +178,11 @@ CREATE TABLE `messages` (
   `toRole` int(2) NOT NULL,
   `fromId` int(10) NOT NULL,
   `toId` int(10) NOT NULL,
-  `text` text DEFAULT NULL,
+  `text` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `id` bigint(20) UNSIGNED NOT NULL,
-  `seen` int(11) NOT NULL DEFAULT 0
+  `seen` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -253,11 +238,36 @@ CREATE TABLE `personal_access_tokens` (
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salaries`
+--
+
+CREATE TABLE `salaries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `term` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `salary` double NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `archives` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `salaries`
+--
+
+INSERT INTO `salaries` (`id`, `term`, `month`, `salary`, `teacher_id`, `created_at`, `updated_at`, `archives`) VALUES
+(9, 1, 1, 1000, 1474, '2021-12-12 16:33:59', '2021-12-12 19:57:09', 3),
+(10, 1, 1, 1000, 258951753, '2021-12-12 16:34:20', '2021-12-12 19:57:09', 3);
 
 -- --------------------------------------------------------
 
@@ -267,7 +277,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `show_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `switch` int(11) NOT NULL DEFAULT 0,
+  `switch` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -295,24 +305,24 @@ CREATE TABLE `students` (
   `phone` int(11) NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'inactive',
-  `studyLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `confirmed` tinyint(1) NOT NULL DEFAULT 1,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `teacher` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `teacher` text COLLATE utf8mb4_unicode_ci,
   `teacherID` int(11) DEFAULT NULL,
-  `archives` int(11) NOT NULL DEFAULT 0,
-  `birthday` date DEFAULT NULL
+  `archives` int(11) NOT NULL DEFAULT '0',
+  `birthday` date DEFAULT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `installments` float NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`firstName`, `secondName`, `thirdName`, `lastName`, `gender`, `identification`, `phone`, `address`, `active`, `studyLevel`, `confirmed`, `created_at`, `updated_at`, `teacher`, `teacherID`, `archives`, `birthday`) VALUES
-('منت', 'طكمنت', 'طكمن', 'تنوةز', 'ذكر', 123123123, 1231231230, 'كمنتة', 'inactive', 'الثاني', 1, '2021-10-08 12:17:23', '2021-10-08 12:23:23', NULL, NULL, 0, '2021-10-01'),
-('يبلات', 'بلاتن', 'اتىةو', 'لاتن', 'أنثى', 147144447, 1231231230, 'سيسنمي', 'inactive', 'الثاني', 1, '2021-10-08 12:03:37', '2021-10-08 12:03:37', NULL, NULL, 0, '2021-10-01'),
-('يبلات', 'بلاتن', 'اتىةو', 'لاتن', 'أنثى', 147147147, 1231231230, 'سيسنمي', 'inactive', 'الثاني', 1, '2021-10-08 12:02:38', '2021-10-08 12:02:38', NULL, NULL, 0, '2021-10-01');
+INSERT INTO `students` (`firstName`, `secondName`, `thirdName`, `lastName`, `gender`, `identification`, `phone`, `address`, `active`, `confirmed`, `created_at`, `updated_at`, `teacher`, `teacherID`, `archives`, `birthday`, `branch_id`, `installments`) VALUES
+('شهد', 'احمد', 'سمير', 'واصف', 'أنثى', 145236752, 568763249, 'ديرنظام', 'inactive', 1, '2021-11-20 13:52:58', '2021-12-12 19:57:09', NULL, NULL, 0, '2021-12-01', 8, 200),
+('محمد', 'محمود', 'احمد', 'حمد', 'أنثى', 658421356, 265862489, 'رام الله', 'inactive', 1, '2021-12-05 16:51:05', '2021-12-12 21:23:24', NULL, NULL, 0, '2021-12-23', 8, 120);
 
 -- --------------------------------------------------------
 
@@ -324,25 +334,23 @@ CREATE TABLE `teachers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `identification` int(11) NOT NULL,
-  `studyLevel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `delete` int(11) NOT NULL DEFAULT 0,
-  `educationLevel` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL
+  `delete` int(11) NOT NULL DEFAULT '0',
+  `educationLevel` text COLLATE utf8mb4_unicode_ci,
+  `phone` int(11) DEFAULT NULL,
+  `branch_id` int(11) DEFAULT NULL,
+  `salary` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`id`, `name`, `identification`, `studyLevel`, `created_at`, `updated_at`, `delete`, `educationLevel`, `phone`) VALUES
-(14, 'سوسو', 123456789, 'الخامس', '2021-05-08 15:20:43', '2021-05-08 15:20:43', 0, NULL, NULL),
-(15, 'محممد', 1474, 'الثالث', '2021-05-10 14:58:22', '2021-05-10 14:58:22', 0, NULL, NULL),
-(17, 'فادي', 700, 'الثاني', '2021-05-12 10:36:20', '2021-10-08 15:51:16', 1, NULL, NULL),
-(18, 'عماد سعاده', 600, 'الاول', '2021-05-20 12:40:00', '2021-10-08 15:51:19', 1, NULL, NULL),
-(19, 'Mohammad Khateeb', 822, 'الرابع', '2021-05-20 12:40:49', '2021-05-20 19:01:43', 1, NULL, NULL),
-(20, 'شهد', 123456787, 'الثاني', '2021-10-08 15:54:02', '2021-10-08 15:54:02', 0, 'ثانويه عامه', 1234567890);
+INSERT INTO `teachers` (`id`, `name`, `identification`, `created_at`, `updated_at`, `delete`, `educationLevel`, `phone`, `branch_id`, `salary`) VALUES
+(15, 'محممد', 1474, '2021-05-10 14:58:22', '2021-12-12 16:57:04', 1, NULL, NULL, NULL, 1000),
+(22, 'ملاك', 258951753, '2021-12-07 18:00:16', '2021-12-12 16:35:27', 0, 'بكالوريوس', 258753159, 9, 1000),
+(23, 'جنان', 753159852, '2021-12-12 17:15:19', '2021-12-12 17:15:19', 0, 'بكالوريوس', 531598520, 8, 1200);
 
 -- --------------------------------------------------------
 
@@ -358,7 +366,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `archives` int(11) NOT NULL DEFAULT 0,
+  `archives` int(11) NOT NULL DEFAULT '0',
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -373,10 +381,7 @@ INSERT INTO `users` (`id`, `userid`, `role`, `password`, `remember_token`, `crea
 (29, 502, 2, '$2y$10$DVPJYgePsL79pq83/QThR.9E7e54f.WhwdQRKN9a4oFlZ/G8sQUKy', NULL, '2021-04-09 15:29:25', '2021-04-09 15:29:25', 0, ''),
 (39, 4040, 2, '$2y$10$Blaw1tv.Y.YRyXfvTQw5OOhOLwjSlotJiWtSY0u6r0pn5t0OJMHAa', NULL, '2021-04-10 12:28:40', '2021-04-10 12:28:40', 0, ''),
 (41, 0, 2, '$2y$10$TV7qKc8T1quq/5TrChKFveGoc0qAFsEtYR/PCNGzJ/CVwy53D3hsy', NULL, '2021-04-11 16:46:30', '2021-04-11 16:46:30', 0, ''),
-(55, 123456789, 2, '$2y$10$UDgHWBlwKqVO4BdYpbT2oezXJIr1DyW4cL327BVGmvLIvrxUqw5Bi', NULL, '2021-05-08 15:20:43', '2021-05-08 15:20:43', 0, 'سوسو'),
-(56, 1474, 2, '$2y$10$uVxSHT8wTEZPDDEsV/1.CuuUcZBFO2yoVj77tmM5xKKfvV8SSik0G', NULL, '2021-05-10 14:58:22', '2021-05-10 14:58:22', 0, 'محممد'),
-(62, 4564, 4, '$2y$10$MeUFddB2zHQus2M5WwUJ0.J42uXgpsp9w5uc8Bp2CHtkKH3mTcjGG', NULL, '2021-10-06 14:54:18', '2021-10-06 14:54:18', 0, 'كمنمك نتنم'),
-(63, 123456787, 2, '$2y$10$4i6bIW/H2hx0S4SnJV0Je.HNfiF.2vee8yxfYc3emeiNgCuxuYKlG', NULL, '2021-10-08 15:54:02', '2021-10-08 15:54:02', 0, 'شهد');
+(67, 753159852, 2, '$2y$10$M1GVl8zbtVmEhQpaP24U7OCW1CXTFgA3KzjmiI.18/yhBvnk6Do4O', NULL, '2021-12-12 17:15:19', '2021-12-12 17:15:19', 0, 'جنان');
 
 -- --------------------------------------------------------
 
@@ -402,9 +407,9 @@ CREATE TABLE `volunteers` (
   `studyLevel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'undefined',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `permissionEvaluation` int(11) NOT NULL DEFAULT 0,
-  `transportation` int(11) NOT NULL DEFAULT 0,
-  `archives` int(11) NOT NULL DEFAULT 0
+  `permissionEvaluation` int(11) NOT NULL DEFAULT '0',
+  `transportation` int(11) NOT NULL DEFAULT '0',
+  `archives` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -460,13 +465,21 @@ CREATE TABLE `websockets_statistics_entries` (
 -- Indexes for table `attendances`
 --
 ALTER TABLE `attendances`
-  ADD PRIMARY KEY (`identification`,`date`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `identification` (`identification`,`date`) USING BTREE;
+
+--
+-- Indexes for table `branches`
+--
+ALTER TABLE `branches`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `classroom` (`classroom`,`name`);
 
 --
 -- Indexes for table `evaluations`
 --
 ALTER TABLE `evaluations`
-  ADD PRIMARY KEY (`identification`,`date`);
+  ADD PRIMARY KEY (`id`,`term`);
 
 --
 -- Indexes for table `evaluation_texts`
@@ -478,6 +491,12 @@ ALTER TABLE `evaluation_texts`
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `installments`
+--
+ALTER TABLE `installments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -505,6 +524,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `salaries`
+--
+ALTER TABLE `salaries`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `show_requests`
@@ -548,10 +573,28 @@ ALTER TABLE `websockets_statistics_entries`
 --
 
 --
+-- AUTO_INCREMENT for table `attendances`
+--
+ALTER TABLE `attendances`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `branches`
+--
+ALTER TABLE `branches`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `evaluations`
+--
+ALTER TABLE `evaluations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `evaluation_texts`
 --
 ALTER TABLE `evaluation_texts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -560,10 +603,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `installments`
+--
+ALTER TABLE `installments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=603;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -578,6 +627,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `salaries`
+--
+ALTER TABLE `salaries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `show_requests`
 --
 ALTER TABLE `show_requests`
@@ -587,13 +642,13 @@ ALTER TABLE `show_requests`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `websockets_statistics_entries`
